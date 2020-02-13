@@ -1,0 +1,31 @@
+swagger: '2.0'
+info:
+  title: RSocket notifications
+  version: 1.0.0
+paths: {}
+definitions:
+  NotificationToken:
+    required:
+      - token
+      - status
+    type: object
+    properties:
+      token:
+        type: string
+      status:
+        type: string
+        default: NEW
+        enum:
+          - NEW
+          - REGISTERED
+          - LOGGED_OUT
+  ErrorModel:
+    required:
+      - message
+      - token
+    type: object
+    properties:
+      message:
+        type: string
+      token:
+        type: string

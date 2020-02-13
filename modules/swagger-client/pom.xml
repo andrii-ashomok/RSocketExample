@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.example</groupId>
+	<artifactId>swagger-client</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>swagger-client</name>
+	<description>Demo project for Spring Boot</description>
+
+	<properties>
+		<java.version>11</java.version>
+		<codegen.version>2.4.0</codegen.version>
+		<codegen-templates.version>1.2.0</codegen-templates.version>
+	</properties>
+
+	<dependencies>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>io.swagger</groupId>
+				<artifactId>swagger-codegen-maven-plugin</artifactId>
+				<version>${codegen.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<inputSpec>${project.basedir}/src/main/resources/api.yaml</inputSpec>
+							<language>java-pojos</language>
+							<configOptions>
+								<sourceFolder>src/main/java</sourceFolder>
+							</configOptions>
+							<output>${project.build.directory}/generated-sources</output>
+							<modelPackage>com.example.models</modelPackage>
+							<generateSupportingFiles>false</generateSupportingFiles>
+							<generateApiTests>false</generateApiTests>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>com.smartbear.swaggerhub</groupId>
+						<artifactId>codegen-templates</artifactId>
+						<version>${codegen-templates.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>
